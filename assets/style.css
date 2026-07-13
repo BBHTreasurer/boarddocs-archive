@@ -1,47 +1,62 @@
 
 :root{
-  --ink:#1a2332;
-  --paper:#f7f5f0;
+  --ink:#2b2b2b;
+  --paper:#faf9f6;
   --card:#ffffff;
-  --line:#dcd6c8;
-  --accent:#2d5a4a;
-  --accent-2:#a6763f;
+  --line:#e2ddd0;
+  --accent:#CE2031;      /* BBHCD Red, Pantone 185C */
+  --accent-2:#F1B823;    /* BBHCD Gold, Pantone 7406 */
+  --formal:#475058;      /* Pantone 546, for quiet secondary text */
   --muted:#6b6455;
 }
 *{box-sizing:border-box;}
 body{
   margin:0;
-  font-family:"Iowan Old Style","Palatino Linotype",Georgia,serif;
+  font-family:Cambria,Georgia,"Times New Roman",serif;
   background:var(--paper);
   color:var(--ink);
-  line-height:1.5;
+  line-height:1.55;
 }
 .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
 a{color:var(--accent);text-decoration:none;}
 a:hover{text-decoration:underline;}
 
-.site-header{background:var(--ink);color:#fff;border-bottom:4px solid var(--accent-2);}
-.header-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;}
-.brand{display:flex;align-items:center;gap:10px;color:#fff;}
+.site-header{
+  background:var(--accent);color:#fff;
+  border-bottom:4px solid var(--accent-2);
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;}
+.brand{display:flex;align-items:center;gap:12px;color:#fff;}
 .brand:hover{text-decoration:none;}
 .brand-mark{
-  font-family:Georgia,serif;font-weight:700;font-size:14px;letter-spacing:1px;
-  background:var(--accent-2);color:#1a2332;padding:4px 8px;border-radius:3px;
+  font-family:Cambria,Georgia,serif;font-weight:700;font-size:20px;letter-spacing:0.5px;
+  color:var(--accent);background:#fff;padding:4px 10px;border-radius:3px;
+  border-bottom:3px solid var(--accent-2);
 }
-.brand-text{font-size:17px;font-weight:600;}
-nav a{color:#e6e2d6;margin-left:20px;font-size:15px;}
-nav a.active, nav a:hover{color:#fff;}
+.brand-text{font-size:18px;font-weight:700;font-family:Cambria,Georgia,serif;}
+nav a{color:#fde8dd;margin-left:22px;font-size:15px;font-family:Arial,Helvetica,sans-serif;}
+nav a.active, nav a:hover{color:#fff;text-decoration:underline;}
 
 .hero{padding:40px 0 20px;border-bottom:1px solid var(--line);margin-bottom:24px;}
-.hero h1{font-size:32px;margin:0 0 10px;}
-.hero p{color:var(--muted);font-size:16px;max-width:640px;}
+.hero h1{font-size:32px;margin:0 0 10px;font-family:Cambria,Georgia,serif;color:var(--accent);}
+.hero p{color:var(--muted);font-size:16px;max-width:640px;font-family:Arial,Helvetica,sans-serif;}
 
 .controls{display:flex;gap:12px;margin-bottom:20px;}
 #search-box{
   flex:1;padding:10px 14px;font-size:15px;border:1px solid var(--line);border-radius:4px;
-  font-family:inherit;background:var(--card);
+  font-family:Arial,Helvetica,sans-serif;background:var(--card);
 }
-#year-filter{padding:10px 12px;font-size:15px;border:1px solid var(--line);border-radius:4px;background:var(--card);font-family:inherit;}
+#search-box:focus{outline:2px solid var(--accent-2);outline-offset:1px;}
+
+.year-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(140px, 1fr));gap:12px;}
+.year-card{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  padding:24px 12px;background:var(--card);border:1px solid var(--line);border-top:3px solid var(--accent);
+  border-radius:4px;color:var(--ink);text-align:center;
+}
+.year-card:hover{border-top-color:var(--accent-2);text-decoration:none;background:#fffdf7;}
+.year-card-num{font-size:26px;font-weight:700;color:var(--accent);font-family:Cambria,Georgia,serif;}
+.year-card-meta{font-size:13px;color:var(--muted);font-family:Arial,Helvetica,sans-serif;}
 
 .meeting-list{display:flex;flex-direction:column;gap:2px;}
 .meeting-row{
@@ -50,49 +65,56 @@ nav a.active, nav a:hover{color:#fff;}
   color:var(--ink);
 }
 .meeting-row:hover{border-color:var(--accent);text-decoration:none;}
-.meeting-row-date{font-weight:600;color:var(--accent-2);font-size:14px;white-space:nowrap;}
+.meeting-row-date{font-weight:700;color:var(--accent);font-size:14px;white-space:nowrap;font-family:Arial,Helvetica,sans-serif;}
 .meeting-row-name{font-size:16px;}
-.meeting-row-meta{font-size:13px;color:var(--muted);white-space:nowrap;}
-.no-results{color:var(--muted);padding:20px 0;}
+.meeting-row-meta{font-size:13px;color:var(--muted);white-space:nowrap;font-family:Arial,Helvetica,sans-serif;}
+.no-results{color:var(--muted);padding:20px 0;font-family:Arial,Helvetica,sans-serif;}
 
-.breadcrumb{margin:20px 0 10px;font-size:14px;}
-.meeting-detail h1{font-size:28px;margin-bottom:4px;}
-.meeting-date{color:var(--accent-2);font-weight:600;margin-top:0;}
-.meeting-desc{color:var(--muted);font-size:15px;}
+.breadcrumb{margin:20px 0 10px;font-size:14px;font-family:Arial,Helvetica,sans-serif;}
+.meeting-detail h1{font-size:28px;margin-bottom:4px;font-family:Cambria,Georgia,serif;color:var(--accent);}
+.meeting-date{color:var(--formal);font-weight:700;margin-top:0;font-family:Arial,Helvetica,sans-serif;}
+.meeting-desc{color:var(--muted);font-size:15px;font-family:Arial,Helvetica,sans-serif;}
 
 .category{margin-bottom:24px;}
 .category h3{
-  font-size:16px;text-transform:uppercase;letter-spacing:0.5px;color:var(--accent);
-  border-bottom:1px solid var(--line);padding-bottom:6px;margin-bottom:14px;
+  font-size:15px;text-transform:uppercase;letter-spacing:0.6px;color:var(--accent);
+  border-bottom:2px solid var(--accent-2);padding-bottom:6px;margin-bottom:14px;
+  font-family:Arial,Helvetica,sans-serif;font-weight:700;
 }
 .agenda-item{padding:10px 0;border-bottom:1px solid #ece8dc;}
 .agenda-item:last-child{border-bottom:none;}
 .agenda-item-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
-.agenda-num{font-weight:700;color:var(--accent-2);font-size:14px;min-width:36px;}
+.agenda-num{font-weight:700;color:var(--accent);font-size:14px;min-width:36px;font-family:Arial,Helvetica,sans-serif;}
 .agenda-subject{font-size:16px;flex:1;}
 .tag{
-  font-size:11px;text-transform:uppercase;letter-spacing:0.5px;background:#eee8d8;
-  color:var(--muted);padding:2px 7px;border-radius:3px;
+  font-size:11px;text-transform:uppercase;letter-spacing:0.5px;background:#f4ead0;
+  color:var(--formal);padding:2px 7px;border-radius:3px;font-family:Arial,Helvetica,sans-serif;
 }
-.tag-fiscal{background:#e4efe9;color:var(--accent);}
-.motion{font-size:14px;color:var(--muted);margin:6px 0 0;font-style:italic;}
+.tag-fiscal{background:#fce9d6;color:var(--accent);}
+.motion{font-size:14px;color:var(--muted);margin:6px 0 0;font-style:italic;font-family:Arial,Helvetica,sans-serif;}
 .file-list{list-style:none;padding:0;margin:8px 0 0;}
-.file-list li{font-size:14px;padding:2px 0;}
+.file-list li{font-size:14px;padding:2px 0;font-family:Arial,Helvetica,sans-serif;}
 .file-list li::before{content:"\1F4CE  ";}
 
 .minutes, .meeting-files{margin-top:32px;padding-top:20px;border-top:2px solid var(--line);}
-.minutes h2, .meeting-files h2, .agenda h2{font-size:20px;margin-bottom:14px;}
-.minutes-body{font-size:15px;background:var(--card);padding:20px;border:1px solid var(--line);border-radius:4px;}
+.minutes h2, .meeting-files h2, .agenda h2{font-size:20px;margin-bottom:14px;font-family:Cambria,Georgia,serif;color:var(--accent);}
+.minutes-body{font-size:15px;background:var(--card);padding:20px;border:1px solid var(--line);border-left:4px solid var(--accent-2);border-radius:4px;}
 .minutes-body p, .minutes-body div{margin:0 0 4px;}
 
 .policy-book{margin-bottom:28px;}
-.policy-book h2{font-size:18px;color:var(--accent);border-bottom:1px solid var(--line);padding-bottom:6px;}
+.policy-book h2{font-size:18px;color:var(--accent);border-bottom:2px solid var(--accent-2);padding-bottom:6px;font-family:Cambria,Georgia,serif;}
 .policy-list{list-style:none;padding:0;}
-.policy-list li{padding:6px 0;border-bottom:1px solid #ece8dc;font-size:15px;}
-.policy-num{font-weight:700;color:var(--accent-2);margin-right:10px;}
+.policy-list li{padding:6px 0;border-bottom:1px solid #ece8dc;font-size:15px;font-family:Arial,Helvetica,sans-serif;}
+.policy-num{font-weight:700;color:var(--accent);margin-right:10px;}
 .policy-date{color:var(--muted);font-size:13px;}
 
-.site-footer{margin-top:60px;padding:24px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13px;}
+.site-footer{
+  margin-top:60px;padding:28px 0;border-top:4px solid var(--accent);
+  background:var(--formal);color:#e8e6df;
+}
+.site-footer .wrap{display:flex;flex-direction:column;gap:4px;}
+.site-footer p{margin:0;font-size:13px;font-family:Arial,Helvetica,sans-serif;}
+.footer-tagline{font-style:italic;color:var(--accent-2);font-family:Cambria,Georgia,serif;font-size:14px;}
 
 @media (max-width:640px){
   .meeting-row{grid-template-columns:1fr;gap:4px;}
