@@ -13,13 +13,17 @@ async function loadIndex(){
 }
 
 function renderResults(matches){
-  resultsBox.innerHTML = matches.map(m => `
+  const capped = matches.slice(0, 200);
+  resultsBox.innerHTML = capped.map(m => `
     <a class="meeting-row" href="${m.url}">
       <div class="meeting-row-date">${m.date}</div>
-      <div class="meeting-row-name">${m.name}</div>
+      <div class="meeting-row-name">${m.subject}<br><span style="font-weight:normal;color:var(--muted);font-size:13px;">${m.category} &middot; ${m.meeting_name}</span></div>
       <div class="meeting-row-meta">${m.year}</div>
     </a>
   `).join('');
+  if (matches.length > 200) {
+    resultsBox.innerHTML += `<p class="no-results">Showing first 200 of ${matches.length} matches &mdash; try a more specific search term.</p>`;
+  }
 }
 
 box.addEventListener('input', async () => {
@@ -32,7 +36,11 @@ box.addEventListener('input', async () => {
   }
   yearGrid.style.display = 'none';
   const idx = await loadIndex();
-  const matches = idx.filter(m => m.name.toLowerCase().includes(q) || m.date.toLowerCase().includes(q));
+  const matches = idx.filter(m =>
+    m.subject.toLowerCase().includes(q) ||
+    m.category.toLowerCase().includes(q) ||
+    m.date.toLowerCase().includes(q)
+  );
   resultsBox.style.display = matches.length ? '' : 'none';
   noResults.style.display = matches.length ? 'none' : '';
   renderResults(matches);
